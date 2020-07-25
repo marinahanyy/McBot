@@ -1,0 +1,41 @@
+! version = 2.0
+> topic random
++ (hi|hey|hello)[*]
+- hi, for order enter 1 ,for complaint enter 2 ,for late orders  enter 3 ,for offers enter 4 ,for contacting an agent enter 5 ,for others enter 6{topic=choices}
+< topic
+>topic choices
++ 1
+-hi please enter your order {topic=order}
++ 2
+-hi please proceed with your complaint
++3
+-for how long is the order late?
++4
+-here are the offer images,please enter your selected offer number
++5
+-please wait until we redirect you with our agent soon
++6
+-how can i help you?
+<topic
+>topic order
++(sandwiches|meals|drinks|sides|ice cream|apple pie)
+*<star> == sandwiches => chicken or beef ? {topic=sandwich}
+*<star1> == meals => chicken or beef ?{topic=meal}
+*<star2> == drinks => cola, fanta, seven up, milk shake, or mcfizz?{topic=drinks}
+<topic
+>topic sandwich
++*
+-nice choice{topic=random}
+<topic
+>topic meal
++*
+-nice choice{topic=random}
+<topic
+>topic drinks
++*
+-nice choice{topic=random}
+<topic
+
+
+
+
